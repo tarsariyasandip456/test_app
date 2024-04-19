@@ -31,14 +31,23 @@ function UpdateTicket(props) {
   };
 
 const handleFormSubmit = (values, { resetForm }) => {
-
+  console.log("seea",values.seatNumber)
   const updatedBookedSeats = bookedSeats.map(seat => {
-    if (new Date(seat.date)?.toLocaleDateString('en-GB') == new Date(values?.date)?.toLocaleDateString('en-GB') && seat.seatNumber == values.seatNumber) {
-      seat.firstName = values.firstName;
-      seat.lastName = values.lastName;
-      seat.email = values.email;
-      seat.seatNumber=values.seatNumber;
-      seat.date=values.date?.toString()
+    if (new Date(seat.date)?.toLocaleDateString('en-GB') == new Date(values?.date)?.toLocaleDateString('en-GB') && seat.seatNumber == props?.seatNumber) {
+      console.log("calledddd",{
+        "firstName": values.firstName,
+        "lastName" :values.lastName,
+        "email":values.email,
+        "seatNumber":values.seatNumber,
+        "date":values.date?.toString()
+        })
+      return {
+      "firstName": values.firstName,
+      "lastName" :values.lastName,
+      "email":values.email,
+      "seatNumber":values.seatNumber,
+      "date":values.date?.toString()
+      }
     }
     return seat;
   });
